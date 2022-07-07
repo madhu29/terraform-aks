@@ -15,9 +15,11 @@ steps:
     terraformVersion: 'latest'
 - task: replacetokens@5
   inputs:
-    targetFiles: '**/*.tf'
+    targetFiles: 'main.tf'
     encoding: 'auto'
-    tokenPattern: 'rm'
+    tokenPattern: 'custom'
+    tokenPrefix: '@'
+    tokenSuffix: '@'
     writeBOM: true
     actionOnMissing: 'warn'
     keepToken: false
