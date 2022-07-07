@@ -10,10 +10,10 @@ terraform {
 
 provider "azurerm" {
   features {}
-subscription_id = "__subscription_id__"
-client_id       = "__client_id__"
-client_secret   = "__client_secret__"
-tenant_id       = "__tenant_id__"
+subscription_id = "@subscription_id@"
+client_id       = "@client_id@"
+client_secret   = "@client_secret@"
+tenant_id       = "@tenant_id@"
 }
 
 resource "azurerm_resource_group" "aks-rg" {
@@ -48,6 +48,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count          = var.system_node_count
     vm_size             = "Standard_DS2_v2"
     type                = "VirtualMachineScaleSets"
+    availability_zones  = [1, 2, 3]
     enable_auto_scaling = false
   }
 
